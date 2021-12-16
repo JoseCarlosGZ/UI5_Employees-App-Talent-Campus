@@ -1,0 +1,90 @@
+<mvc:View
+    controllerName="com.accenture.employee2.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+    xmlns:fb="sap.ui.comp.filterbar"
+>
+    <Page title="{i18n>titleMain}" enableScrolling="false">
+        <content>
+            <!-- Header con los inputs -->
+            <HBox justifyContent="Center" >
+                <VBox class="sapUiMediumMargin">
+                    <Text text="Location" />
+                        <Select
+                            id="slLocation"
+                            selectedKey="{dataModel>/selected_location}" 
+                            forceSelection="false"
+                            change="onSelectFilter"
+                            items="{path: 'dataModel>/EntityLocations'}"
+                        >
+                            <core:Item key="{dataModel>ID}" text="{dataModel>city}" />
+                        </Select>
+                </VBox>
+                <VBox class="sapUiMediumMargin">
+                    <Text text="Category" />
+                        <Select
+                            id="slCategory"
+                            selectedKey="{dataModel>/selected_category}"
+                            forceSelection="false"
+                            change="onSelectFilter"
+                            items="{path: 'dataModel>/EntityCategories'}"
+                        >
+                            <core:Item key="{dataModel>ID}" text="{dataModel>name}" />
+                        </Select>
+                </VBox>
+            </HBox>
+
+            <!-- Tabla bindeada -->
+            <ScrollContainer vertical="true" height="80%">
+            <Table 
+                id="tabla01" 
+                sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"  
+                items="{dataModel>/EntityEmployees}"
+                
+            >
+                <headerToolbar>
+                    <Toolbar >
+                        <Text text="Employees"  class="sapMH4FontSize"/>
+                        <ToolbarSpacer />
+                        <Button text="Add new employee" press="onPressShowFragmentAddEmployee" icon="sap-icon://add-employee" />
+                        <Button text="Refresh" press="onPressRefreshTable" class="sapUiSmallMarginEnd " icon="sap-icon://synchronize"   />
+                    </Toolbar>
+                </headerToolbar>
+                <!-- 1ª fila con los nombres de las columnas -->
+                <columns >
+                    <Column >
+                        <Text text="Name"  />
+                    </Column>
+                    <Column>
+                        <Text text="Location" />
+                    </Column>
+                    <Column>
+                        <Text text="Category" />
+                    </Column>
+                    <Column>
+                        <Text text="Modify" />
+                    </Column>
+                    <Column>
+                    <Text text="Delete" />
+                    </Column>
+                </columns>
+                <!-- Datos que va a pintar cada columna -->
+                <items>
+                    <ColumnListItem press="onPressNavToEmployeeProfile" type="Active">
+                        <cells>
+                            <Text text="{dataModel>employee_name}" />
+                            <Text text="{dataModel>location/city}" />
+                            <Text text="{dataModel>Categories_name_Added_in_DataManager}" />
+                            <core:Icon src="sap-icon://edit" class="size1" color="#2F7AD0" press="onPressShowFragmentModifyEmployee"/>
+                            <core:Icon src="sap-icon://delete" class="size1" color="#E51D1D"  press="onDeleteEmployee" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+             </ScrollContainer> 
+        </content>
+        
+    </Page>
+
+</mvc:View>

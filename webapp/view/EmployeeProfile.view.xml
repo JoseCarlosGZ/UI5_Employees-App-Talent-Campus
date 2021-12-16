@@ -1,0 +1,77 @@
+<mvc:View
+    controllerName="com.accenture.employee2.controller.EmployeeProfile"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:core="sap.ui.core" 
+>
+
+
+    <Page  enableScrolling="true">
+
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" press="onPressGoMain"/>
+                        </contentLeft>
+                        <contentMiddle>
+                        <Title text="{i18n>titleEmployeeProfile}" titleStyle="H3"/>
+                    </contentMiddle>
+                <contentRight />
+            </Bar>
+        </customHeader>
+
+<!--
+        <HBox  class="sapUiLargeMarginTop" justifyContent="Center">
+          <Button text="Back to Main View" press="onPressGoMain" icon="sap-icon://sys-back"  />
+        </HBox>
+        -->
+
+
+
+  
+        <content>
+
+        <HBox  class="sapUiLargeMarginTop" justifyContent="Center" alignItems="Center" >
+            <VBox  width="50%">
+                <!-- Columna de los inputs -->
+                    <HBox justifyContent="End" alignItems="Center"  >
+                        <Label text="Name:" labelFor="employee_name" class="sapUiSmallMarginEnd" />
+                        <Input width="16em"  value="{dataModel>/DetailEmployee/employee_name}"  enabled="false"  />
+                    </HBox>
+
+                    <HBox justifyContent="End" alignItems="Center" >
+                        <Label text="Location:" labelFor="location_ID" class="sapUiSmallMarginEnd" />
+                        <Input  width="16em" value="{dataModel>/DetailEmployee/location/city}"  enabled="false"/>
+                    </HBox>
+
+                    <HBox justifyContent="End" alignItems="Center" >
+                        <Label text="Category:" labelFor="category_ID"  class="sapUiSmallMarginEnd"/>
+                        <Input width="16em" value="{dataModel>/DetailEmployee/Categories_name_Added_in_DataManager}"  enabled="false"/>
+                    </HBox>
+    <!-- 
+                    <HBox justifyContent="End" alignItems="Center" >
+                        <Label text="Photo" labelFor="profile_image"  class="sapUiSmallMarginEnd"/>
+                        <Input  width="16em" value="{dataModel>/newEmployee/employee_photo}"/>
+                    </HBox>
+    -->
+                    <HBox justifyContent="End" alignItems="Center" >
+                        <Label text="Age:" labelFor="employee_age"  class="sapUiSmallMarginEnd"/>
+                        <Input    width="16em" value="{dataModel>/DetailEmployee/employee_age}"  enabled="false"/>
+                    </HBox>
+
+                    <HBox justifyContent="End" alignItems="Center" >
+                        <Label text="Salary:" labelFor="employee_salary" class="sapUiSmallMarginEnd" />
+                        <Input   width="16em" value="{dataModel>/DetailEmployee/employee_salary}"  enabled="false"/>
+                    </HBox>
+            </VBox>
+
+            <VBox class="sapUiSmallMarginBegin " width="50%" >
+                    <Image src="https://thispersondoesnotexist.com/image" width="25%"/>
+            </VBox>
+        </HBox>
+
+
+
+    </content>
+    </Page>
+</mvc:View>
